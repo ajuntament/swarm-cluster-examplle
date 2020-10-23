@@ -1,0 +1,34 @@
+#!/bin/true 
+#	Shebang just to avoid mistakes
+#
+#	This file is meant to be parsed by dspm to provide package Info at least until a central index is built
+#
+#	It is executed by stackSetup() and supports commands askVar, runMe and parseTemplate so far.
+#	runMe "servers" "oneliner commands"
+#		servers in [local, all, managers, workers, filter={{ .Your.Filter.As.Used.In.(docker node ls --filter=) }}]
+#	parseTemplate "tplFile" "dstFile" "[servers]"
+#		defaults to local
+#	askVar "VARNAME" "Question to show" "default-value"
+#		askVar MYPASS "Enter your password, default passwd" "passwd"
+#		askVar MYPASS "Enter your password, default random" "`pwgen 16`"
+#
+#
+# INFO Title: Traefik cluster with config in Consul
+# INFO Name: traefik
+# INFO NiceName: Traefik Cluster
+# INFO URL: https://github.com/kpeiruza/dspm/stacks/traefik-cluster
+# INFO Project-URL: https://traefik.io/
+# INFO Maintainer: kenneth@floss.cat
+# INFO Description: Traefik HA-Cluster
+# INFO Description: This stack deploys Traefik on every Master node
+# INFO Required-stacks: consul
+# INFO Suggests: 
+# INFO Required-networks: frontend
+# INFO Provides: proxy
+#
+askVar "TRAEFIK_PORT" "Port for HTTP(s) access to Traefik" "8080"
+askVar "TRAEFIK_ACME_EMAIL" "Email for LetsEncrypt" "info@example.com"
+askVar "TRAEFIK_CONSUL_PREFIX" "Prefix in consul KV" "traefik"
+#	Using $SWARM_DOMAIN instead
+#askVar "TRAEFIK_DOCKER_DOMAIN"  "Default swarm domain" ${
+addNet	global	proxy	"daryl.created-by.traefik-cluster=true"
