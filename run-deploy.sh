@@ -35,7 +35,7 @@ create_dir /opt/docker/wordpress/volumes/database
 deploy wordpress
 
 create_dir /opt/docker/elastic/volumes/elasticsearch
-deploy elastic
+deploy logspout-elk
 
 create_dir /opt/docker/monitor/volumes/grafana
 create_dir /opt/docker/monitor/volumes/influxdb
