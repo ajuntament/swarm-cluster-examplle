@@ -8,7 +8,7 @@ function create_dir {
 }
 
 function deploy {
-    docker stack deploy -c ${BASEDIR}/$1/docker-compose.yml $1
+    docker stack deploy -c ${BASEDIR}/$1/stack.yaml $1
 }
 
 IP1=$(curl ifconfig.me)
