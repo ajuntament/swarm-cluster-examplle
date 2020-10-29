@@ -7,9 +7,9 @@ function create_dir {
     fi 
 }
 
-IP1=$(curl ifconfig.me)
-IP2=$(getent hosts instance-2 | awk '{print $1}')
-IP3=$(getent hosts instance-3 | awk '{print $1}')
+IP1="34.77.241.213"
+IP2=$(getent hosts maquina-02 | awk '{print $1}')
+IP3=$(getent hosts maquina-03 | awk '{print $1}')
 export IP1 IP2 IP3
 
 BASEDIR=$(dirname $0)
